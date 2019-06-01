@@ -1,0 +1,52 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class="catalog">
+	<div class="list-box">
+		<div>
+			<h1>Edit Category Item</h1>
+		</div>
+		<div>
+			<form id="form" class="form" action="#" method="POST">
+				<div>
+					<label for="name">Name:</label>
+					<input class="form-control" type="text" maxlength="120" id="name" name="name"
+						value="{{item.name }}">
+				</div>
+				<div>
+					<label for="description">Description:</label>
+					<textarea class="form-control" maxlength="300" id="description"
+						name="description">{{item.description}}</textarea>
+				</div>
+				<div>
+					<label for="color">color:</label>
+					<textarea class="form-control" maxlength="300" id="color" name="color">{{item.color}}</textarea>
+				</div>
+				<div>
+					<label for="price">price:</label>
+					<textarea class="form-control" maxlength="300" id="price" name="price">{{item.price}}</textarea>
+				</div>
+				<div>
+					<label for="category">category:</label>
+					<select class="form-control" id="dropdown" name="category">
+						{% for category in categories %}
+						{% if category.id == item.category_id %}
+						<option id="option" value="{{category.id}}" SELECTED>{{category.name}}</option>
+						{% else %}
+						<option id="option" value="{{category.id}}">{{category.name}}</option>
+						{% endif %}
+						{% endfor %}
+					</select>
+				</div>
+
+			</form>
+			</br>
+			<button type="submit" class="btn btn-default save" id="submit" form="form">Submit</button>
+			<a class="cancel" href="{{url_for('show_catalog')}}">
+				<button class="btn btn-default delete">Cancel</button>
+			</a>
+		</div>
+	</div>
+</div>
+{% endblock %}

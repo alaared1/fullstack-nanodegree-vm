@@ -1,0 +1,70 @@
+<html>
+
+<head>
+  <!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://apis.google.com/js/api:client.js"></script>
+  <script>
+
+    // Initialize the GoogleAuth object
+    (function () {
+      gapi.load('auth2', function () {
+        auth2 = gapi.auth2.init({
+          client_id: "354042635918-va7615su9tqdap9t8tsnqosgi75hfdc7.apps.googleusercontent.com",
+        })
+      });
+    }());
+  </script>
+  <!-- END PRE-REQUISITES FOR GOOGLE SIGN IN -->
+</head>
+
+
+<body>
+  <!-- Custom google sign in button -->
+  <div id="gSignInWrapper">
+    <div id="google-btn">
+      <span class="icon"></span>
+      <span class="buttonText">Sign in with Google</span>
+    </div>
+  </div>
+  <!-- Custom google sign in button -->
+  <div id="result"></div>
+  <script>
+    $('#google-btn').click(function () {
+      function signInCallback(authResult) {
+        if (authResult['code']) {
+          // Hide the sign-in button now that the user is authorized
+          $('#google-btn').attr('style', 'display:none');
+          /* Send the one-time-use code to the server, if the server responds, write a 'login successful' message to the web page 
+            and then redirect back to the main catalog page */
+          $.ajax({
+            type: 'POST',
+            url: '/gconnect?state={{STATE}}',
+            processData: false,
+            data: authResult['code'],
+            contentType: 'application/octet-stream; charset=utf-8',
+            success: function (result) {
+              // Handle and verify the server response.
+              if (result) {
+                $('#result').html('<h3>' + result + '</h3><h3>Redirecting...<h3>');
+                setTimeout(function () {
+                  window.location.href = "/";
+                }, 4000);
+              } else if (authResult['error']) {
+                console.log('There was an error: ' + authResult['error']);
+              } else {
+                $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+              }
+            }
+          });
+        }
+      }
+      auth2.grantOfflineAccess().then(signInCallback);
+    })
+  </script>
+  <!--END GOOGLE PLUS SIGN IN -->
+</body>
+
+</html>

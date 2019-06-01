@@ -1,0 +1,212 @@
+
+.catalog { 
+	/* position: relative; */
+	width: 100%;
+	background-color: #ddd;
+	height: 100%;
+}
+
+.container {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	background-color: rgb(46, 45, 45);
+}
+
+.list-box {
+	position: absolute;
+	background-color:white;
+	width: 80%;
+	margin: 5% 10% 5% 10%;
+	padding: 20px;
+	border: 1px solid black;
+}
+
+.top-menu {
+	padding: 10px 10% 10px 10%;
+	background-color: rgb(46, 45, 45);
+	width: 100%;
+}
+
+.row {
+	margin: 0px;
+}
+
+.app-title {
+	font-size: 26px;
+}
+
+.btn:hover {
+	color: rgb(4, 196, 52);
+}
+
+.btn.login {
+	font-size: 18px;
+	color: rgb(46, 45, 45);
+	border-color: none;
+	background-color: #ddd;
+}
+
+.btn.login:hover {
+	color:black;
+	border-color: rgb(4, 196, 52);
+	background-color: grey;
+}
+
+.form-control {
+	width: fit-content;
+}
+
+.form-control:focus{
+    border-color: rgb(4, 196, 52);
+    -webkit-box-shadow: none;
+    box-shadow: 0 0 0 0.2rem rgba(4, 196, 52, 0.25);
+}
+
+.right {
+	padding-left: 30px;
+	width: 70%;
+	float: left;
+	height: auto;
+	border-left: 3px solid #ddd;
+	}
+
+/* .sep {
+	border-left: 3px solid #ddd;
+	height: 500px;
+	margin: 0 15px 0 15px;
+	float: left;
+	height: auto;
+} */
+
+.left {
+	float: left;
+	margin-right: -3px;
+	width: 30% !important;
+	height: auto;
+	border-right: 3px solid #ddd;
+  }
+
+.form {
+	position: relative;
+	width: fit-content;
+}
+.cancel { 
+	display: inline-block;
+	margin-right: 5px;
+}
+
+a {
+	color: rgb(4, 196, 52);
+
+}
+
+a:hover {
+	color: rgb(1, 124, 32);
+	text-decoration: none;
+}
+
+a:focus {
+	color: rgb(1, 124, 32);
+	text-decoration: none;
+}
+
+
+.items-list a:hover {
+	text-decoration: none;
+}
+
+.wrapper {
+	margin: 30px 0 30px 0 !important;
+}
+.item {
+	display: inline;
+	word-break: break-word;
+}
+
+.item-category {
+	color: grey;
+	display: inline-block;
+	padding-left: 10px;
+	margin: 0;
+	word-break: break-word !important;
+}
+
+.category-item {
+	margin: 0;
+	word-break: break-word;
+}
+
+.username {
+	font-size: 18px;
+	color: #ddd;
+	display: inline-block;
+	width: auto;
+	height: auto;
+	vertical-align: middle;
+}
+
+.logout {
+	display: inline-block;
+	padding-left: 10px;
+}
+
+.flash {
+	width: 70%;
+	word-break: break-word !important;
+}
+
+#gSignInWrapper{
+	position: absolute;
+	width: fit-content;
+	height: fit-content;
+	top: 50%;
+	left: 50%;
+	margin: -5% 0 0 -10%;
+}
+#google-btn {
+	display: inline-block;
+	background: #4285f4;
+	border-color: #4285f4;
+	border: 1px solid #4285f4;
+	color: white;
+	width: 220px;
+	border-radius: 2px;
+	white-space: nowrap;
+}
+#google-btn:hover {
+	cursor: pointer;
+	-webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+}
+span.label {
+	font-weight: bold;
+}
+span.icon {
+	background: url('g-logo.png') transparent 1px 50% no-repeat;
+	background-size: 25px 25px;
+	background-position: center;
+	border-radius: 2px;
+	display: inline-block;
+	vertical-align: middle;
+	width: 50px;
+	height: 50px;
+	background-color: white;
+}
+span.buttonText {
+	display: inline-block;
+	vertical-align: middle;
+	padding-left: 12px;
+	font-size: 16px;
+	/* Use the Roboto font that is loaded in the <head> */
+	font-family: 'Roboto', sans-serif;
+}
+#result{
+	position: absolute;
+	width: fit-content;
+	height: fit-content;
+	top: 50%;
+	left: 50%;
+	margin: -5% 0 0 -10%;
+}

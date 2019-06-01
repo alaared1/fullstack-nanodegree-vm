@@ -1,0 +1,104 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="catalog">
+	<div class="list-box">
+		<div class="left">
+			<div>
+				<div class="title">
+					<h1>Categories</h1>
+				</div>
+			</div>
+			{% for category in categories %}
+			<a href="{{url_for('show_items', category_name = category.name)}}">
+				<div class="wrapper">
+					<h3 class="category-item">{{category.name}}</h3>
+				</div>
+			</a>
+			{% endfor %}
+		</div>
+		<!-- <div class="sep"></div> -->
+		{% if latest %}
+		<div class="right">
+				<div class='flash'>
+						{% with messages = get_flashed_messages() %}
+						{% if messages %}
+						<ul>
+							{% for message in messages %}
+							<li> <strong> {{ message }} </strong> </li>
+							{% endfor %}
+						</ul>
+						{% endif %}
+						{% endwith %}
+				</div>
+			<div>
+				{% if can_edit %}
+				<a href="{{url_for('new_item')}}">
+					<button class="btn btn-default" id="new-item">
+						Add items
+					</button>
+				</a>
+				{% endif %}
+			</div>
+			<div class="title">
+				<h1>Latest Items</h1>
+			</div>
+			{% if items != [] %}
+			{% for item in items %}
+			{% set category_name = get_category_name(item.category_id) %}
+			<a href="{{url_for('show_item', category_name=category_name, item_name=item.name)}}">
+				<div class="wrapper">
+					<h3 class="item">{{item.name}}</h3>
+					<h3 class="item-category">({{ category_name }})</h3>
+				</div>
+			</a>
+			{% endfor %}
+			{% endif %}
+		</div>
+		{% endif %}
+		{% if not latest %}
+		<div class="right">
+				<div class='flash'>
+						{% with messages = get_flashed_messages() %}
+						{% if messages %}
+						<ul>
+							{% for message in messages %}
+							<li> <strong> {{ message }} </strong> </li>
+							{% endfor %}
+						</ul>
+						{% endif %}
+						{% endwith %}
+				</div>
+			<div class="items-list">
+				{% if can_edit %}
+				<div>
+					<a href="{{url_for('new_item', category_name=category.name)}}">
+						<button class="btn btn-default" id="new-item">
+							Add Items
+						</button>
+					</a>
+				</div>
+				{% endif %}
+				<div class="wrapper">
+					<h1 class="item">{{category.name}} items</h1>
+					<h1 class="item-category">({{ num_items }} items)</h1>
+				</div>
+				<h1></h1>
+				<div>
+					{% if items %}
+					{% for i in items %}
+					{% set category_name = get_category_name(i.category_id) %}
+					<a href="{{ url_for('show_item', category_name=category_name, item_name=i.name) }}">
+						<div class="wrapper">
+							<h3 class="item">{{i.name}}</h3>
+						</div>
+					</a>
+
+					{% endfor %}
+					{% endif %}
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+	{% endblock %}
